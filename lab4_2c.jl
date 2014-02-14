@@ -1,5 +1,6 @@
 function f(x::Array)
-        return exp(-0.5*x.^2)/sqrt(2*pi);
+        #return exp(-0.5*x.^2)/sqrt(2*pi);
+        return exp(x).*sin(x);
 end
 
 function integral(a::Float64,b::Float64,N::Int64)
@@ -15,8 +16,8 @@ function integral(a::Float64,b::Float64,N::Int64)
         return result;
 end
 
-integral(-100.,100.,5000000)
+{for i = 1:1000;integral(-100.,100.,10000);end}
 Profile.clear();
-#@profile integral(-100.,100.,5000000);
-@time integral(-100.,100.,5000000);
-#Profile.print();
+@profile {for i = 1:1000;integral(-100.,100.,10000);end}
+@time {for i = 1:1000;integral(-100.,100.,10000);end}
+Profile.print();
