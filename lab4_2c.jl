@@ -1,26 +1,22 @@
-function f(x::Float64)
+function f(x::Array)
         return exp(-0.5*x.^2)/sqrt(2*pi);
-end
-
-function erf(a::Float64)
-        return erf(a/sqrt(2))
 end
 
 function integral(a::Float64,b::Float64,N::Int64)
         @assert typeof(a) == Float64
         @assert typeof(b) == Float64
         @assert typeof(N) == Int64
+        x = Array(Float64,N);
         dx = (b-a)/(N+1);
-        sum = 0.5*dx*(f(a) + f(b));
         for i = 1:N
-                sum += dx*f(a+dx*i);
+                x[i] = a + dx*i
         end
-        return sum;
+        result = sum(f(x))*dx
+        return result;
 end
 
-integral(-100.,100.,5000000);
+integral(-100.,100.,5000000)
 Profile.clear();
-@profile integral(-100.,100.,5000000);
+#@profile integral(-100.,100.,5000000);
 @time integral(-100.,100.,5000000);
-Profile.print();
-print erf
+#Profile.print();
