@@ -9,7 +9,7 @@ function integral(a::Float64,b::Float64,N::Int64)
         end
         c = 1/sqrt(2*pi);
         @devec f = c.*dx.*exp(-0.5.*x.^2);
-        @devec f = dx.*exp(x).*sin(x);
+        #@devec f = dx.*exp(x).*sin(x);
         return sum(f);
 end
 
