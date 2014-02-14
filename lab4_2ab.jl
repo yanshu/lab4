@@ -25,3 +25,5 @@ Profile.clear();
 @profile {for i = 1:1000;integral(-100.,100.,10000);end}
 @time {for i = 1:1000;integral(-100.,100.,10000);end}
 Profile.print();
+println(integral(-100.,100.,10000),"\n");
+@elapsed {for i = 1:1000;integral(-100.,100.,10000);end}
