@@ -1,6 +1,9 @@
 Pkg.add("Devectorize")
 using Devectorize
 
+# test
+
+
 function integral(a::Float64,b::Float64,N::Int64)
         x = Array(Float64,N);
         dx = (b-a)/(N+1);
